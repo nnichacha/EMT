@@ -153,7 +153,7 @@ button{font-family:inherit;cursor:pointer;}
 .page.active{opacity:1;visibility:visible;transform:translateX(0);}
 .page-inner{
   flex:1;width:100%;max-width:1280px;margin:0 auto;
-  padding:var(--top-clear,166px) 40px var(--bottom-clear,162px);
+  padding:var(--top-clear,210px) 40px var(--bottom-clear,190px);
   display:flex;flex-direction:column;justify-content:center;
   min-height:100%;
 }
@@ -533,10 +533,10 @@ h1.hero-title small{display:block;font-size:0.42em;color:var(--cyan-bright);font
 .ticker-gear{width:13px;height:13px;color:var(--cyan-bright);flex-shrink:0;animation:ticker-spin 4s linear infinite;}
 @keyframes ticker-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes ticker-spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-.oc-root-top{border-color:var(--cyan-bright);}
 @media (max-width:980px){
   .ticker-item{font-size:10px;padding:0 18px;}
 }
+.oc-root-top{border-color:var(--cyan-bright);}
 
 .topic-nav{
   position:fixed;top:70px;left:0;right:0;z-index:41;height:46px;
@@ -938,6 +938,7 @@ UookSRgbnWBsfITddllJs66E9xn1RkSzrsjyDrWkXhnLDMZDCIHoGYUswHn3u6I2DIyVdNpdut1gqjEz
       </button>
     </div>
   </div>
+
 
   <div class="ticker-wrap">
     <div class="ticker-track"><span class="ticker-item"><svg class="ticker-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>CNC Laser Cutting</span>
@@ -41467,7 +41468,6 @@ sCfv9f0PO7yq6pvNpmm322/nef6fZFnGoUOHWF1dvXr27Nk/GvP5Atjf+Z3f8X/jb/wNfz+Pxf8faZ98
 </div>
 
 <div class="bottom-bar">
-  <div class="section-tag" id="sectionTag">Home</div>
   <div class="dots" id="dots"></div>
   <div class="nav-arrows">
     <button class="arrow-btn" id="prevArrow" onclick="step(-1)" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -41520,8 +41520,6 @@ function updateUI(){
     b.classList.toggle('active', i===current);
     if(i===current) b.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
   });
-  const _nextTitle = document.getElementById(pages[(current+1)%pages.length]).dataset.title;
-  document.getElementById('sectionTag').innerHTML = `<b>${String(current+1).padStart(2,'0')}</b> / ${String(pages.length).padStart(2,'0')} — ${document.getElementById(pages[current]).dataset.title}<span class="next-hint"> &nbsp;Next &rarr; ${_nextTitle}</span>`;
   document.getElementById(pages[current]).scrollTop = 0;
   const backBtn = document.getElementById('backBtn');
   if(backBtn) backBtn.style.display = current===0 ? 'none' : 'flex';
@@ -48555,6 +48553,23 @@ function updateChromeClearance(){
 }
 window.addEventListener('resize', updateChromeClearance);
 updateChromeClearance();
+// Re-measure once web fonts finish loading (fonts can grow bar height after the
+// first measurement, which previously left just enough gap for headings to end
+// up clipped under the top bar) and again shortly after, as a safety net.
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(updateChromeClearance);
+}
+setTimeout(updateChromeClearance, 300);
+setTimeout(updateChromeClearance, 1200);
+// Keep clearance in sync if the bars themselves ever change size (e.g. topic-nav
+// wrapping to a second line on narrower windows).
+if (window.ResizeObserver) {
+  const ro = new ResizeObserver(updateChromeClearance);
+  ['.topnav', '.topic-nav', '.bottom-bar'].forEach(sel=>{
+    const el = document.querySelector(sel);
+    if (el) ro.observe(el);
+  });
+}
 
 renderNavAndDots();
 updateUI();
