@@ -569,6 +569,8 @@ h1.hero-title small{display:block;font-size:0.42em;color:var(--cyan-bright);font
   .topic-nav{display:none;}
 }
 
+.zoom-hint{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--cyan-bright);font-weight:600;}
+.zoom-hint svg{width:15px;height:15px;flex-shrink:0;}
 .case-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:26px;}
 .case-card{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--navy-900);transition:border-color .25s, transform .4s cubic-bezier(.34,1.56,.64,1);}
 .case-card:hover{border-color:var(--line-bright);transform:translateY(-6px);}
@@ -2137,7 +2139,7 @@ AMYIAGCMAADGCABgbCfXhd59+nD3k6fLX0l6JulQ0l6uawPQlaSlpLN//OXwxc4f/7XKcdEsAWj78UDS
           </div>
         </div>
         <div>
-          <div class="cert-frame" onclick="openLightbox(this.src)">
+          <div class="cert-frame" onclick="openLightbox(this.querySelector('img').src)">
             <div class="zoom-hint">Click to enlarge</div>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnAAAAN1CAYAAAD/qcakAAEAAElEQVR42tT9d5hlx3nei/6qaq219+7c05Mjcs6BiIwgwEyKURIlUqKSJctWPDrHJzzX9vHV9bk6luxjOkkyTZFiEEmQBMEAggRJkACJQCJjgEEYADOYnKfT3nutVVX3j6qVdurdPUP7ufM8lAbT3btX
 qPrq/d7v/d5PLLYOW/I/FhDub1YU/yyk+1L2XdYiROnr/t8G/XevP72+p/rZFrBYi/83MdTn9vq88s+Vf0fn34HKvXXeq7W26/vKn935XJZznaf7T+e997u28vd1PquV/L4+X82ekP//GiGK+z6d9995P/3eY6931u86hnkuvdbDqf4Z9n24+1Ol51s8d/c12fH8y18H
@@ -15522,6 +15524,7 @@ NE3dwOPg4OBwyH28/NcYM0bwSikdsevg4HBi/P8BLQD0T74J7acAAAAASUVORK5CYII=" alt="CNC L
           </div>
         </div>
         <div class="gallery-label" style="margin-top:36px;">Precision Cutting Gallery</div>
+        <div class="zoom-hint" style="margin-top:0;margin-bottom:10px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg> Click any photo to view it full size</div>
         <div class="mini-gallery">
           <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCARXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAABUigAwAEAAAAAQAAAwAAAAAA
 /+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/iAihJQ0NfUFJPRklMRQABAQAAAhhhcHBsBAAAAG1udHJSR0IgWFlaIAfmAAEAAQAAAAAAAGFjc3BBUFBMAAAAAEFQUEwAAAAAAAAAAAAAAAAAAAAAAAD21gAB
@@ -24320,6 +24323,7 @@ k0AJRRRQAUUUooAM0lOx2ptABRS/1pKBh7UUuKDQISl70Y5xRigBKXtSUvSgYlHSl60daAEpeKSigQua
         </div>
         <div class="secondary-unit" style="margin-top:28px;">
           <div class="gallery-label">Supporting Equipment — Auxiliary Hydraulic Press</div>
+          <div class="zoom-hint" style="margin-top:0;margin-bottom:10px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg> Click to view full size</div>
           <div class="machine-photo" style="max-width:360px;">
           <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAABGOgAwAE
 AAAAAQAABXkAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/AABEIBXkEYwMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEF
@@ -28346,6 +28350,7 @@ TQev4ikoEB5OBxzUZIJ681K3U/jUH8X40AKTjGeaX69Kaen5U8f0FACHHIpucDHXNKf8/rSN/QUAKpII
           <div class="spec-item"><div class="k">Qualification Scope</div><div class="v" style="font-size:14px;">Industrial + Offshore work &mdash; per ASME IX &amp; AWS D1.1</div></div>
         </div>
         <div class="gallery-label" style="margin-top:26px;">Certified Welding Team</div>
+        <div class="zoom-hint" style="margin-top:0;margin-bottom:10px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg> Click any document to view it full size</div>
         <div class="welder-grid">
           <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQU
 FBQUFBQUFBT/wAARCAOBAnoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW
@@ -32842,6 +32847,7 @@ KKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP//Z" onclick="openLightbox(
       <div class="eyebrow">Section 03 — Value &amp; Trust</div>
       <div class="kicker" style="margin-top:14px;"><div class="line"></div><h2 class="title">Work We're Proud to Stand Behind</h2></div>
       <p class="lead-lg">A closer look at real components, assemblies, and finished units leaving our Rayong facility &mdash; every piece checked before it moves to the next stage.</p>
+      <div class="zoom-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg> Click any photo to view it full size</div>
 
       <div class="tab-row" style="margin-top:10px;">
         <button class="tab-btn active" data-tab="port-oem" onclick="switchTab(this,'port')">OEM &amp; Mass Production</button>
